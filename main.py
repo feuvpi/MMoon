@@ -12,14 +12,14 @@ def clicked():
     date = entry.get()
     weekday = strftime('%A', strptime(date, '%b %d, %Y'))
     date2 = datetime.strptime(date, '%b %d, %Y')
-    newdate = date2.replace(hour=12, minute=24, second=1)
+    newdate = date2.replace(hour=datetime.now().hour, minute=datetime.now().minute, second=datetime.now().second)
+    print(newdate)
     days = (newdate - known_new)
     totalmoons = days.days / 29.53
     print(totalmoons)
     f, t = math.modf(totalmoons)
     print(f)
     days_passed = f * lunar_cycle
-    print(f*29.53)
     days_left = lunar_cycle - days_passed
     print(f'Faltam {days_left} dias para a proxima Lua Nova.')
 
