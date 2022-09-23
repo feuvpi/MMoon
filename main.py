@@ -4,8 +4,8 @@ from time import strftime, strptime
 from datetime import datetime
 import math
 
-known_new = datetime(year=2000, month=1, day=6, hour=12, minute=24, second=1)
-lunar_cycle = 29.53
+known_new = datetime(year=2000, month=1, day=6, hour=16, minute=13, second=1)
+lunar_cycle = 29.53049
 
 def clicked():
     global entry
@@ -15,12 +15,15 @@ def clicked():
     newdate = date2.replace(hour=datetime.now().hour, minute=datetime.now().minute, second=datetime.now().second)
     print(newdate)
     days = (newdate - known_new)
-    totalmoons = days.days / 29.53
+    totalmoons = days.days / 29.53049
     print(totalmoons)
     f, t = math.modf(totalmoons)
     print(f)
     days_passed = f * lunar_cycle
+    print(days_passed)
     days_left = lunar_cycle - days_passed
+    newdate.day += days_left
+    print(newdate)
     print(f'Faltam {days_left} dias para a proxima Lua Nova.')
 
 
